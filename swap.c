@@ -17,39 +17,39 @@ List *swap(List *head, List *node_1, List *node_2)
 
     List *_head = head;
     List *pre_node_1 = NULL ,*pre_node_2 = NULL ,*tmp_node = NULL;
+	int num_nodes_in_list = 0;
 
-	
-    while (head && head->next) {
-        if (head->next == node_1) {
+	// find pre-nodes
+	for(; head && head->next;head = head->next)
+	{
+        if (head->next == node_1) { 
             pre_node_1 = head;
-
-        }
-
+        	num_nodes_in_list = num_nodes_in_list + 1;
+		}
         if (head->next == node_2) {
             pre_node_2 = head;
-        }
-        head = head->next;
-    }
+        	num_nodes_in_list = num_nodes_in_list + 1;
+		}
+	}
 
     head = _head;
+
     if (head == node_1) {
-        pre_node_1 = NULL;
-        num_pre_node_1_and_node_2 = num_pre_node_1_and_node_2 + 1;
+        num_nodes_in_list = num_nodes_in_list + 1;
     }
 
     if (head == node_2) {
-        pre_node_2 = NULL;
-        num_pre_node_1_and_node_2 = num_pre_node_1_and_node_2 + 1;
+        num_nodes_in_list = num_nodes_in_list + 1;
     }
 
-	if( num_pre_node_1_and_node_2 != 2)
-        return head;
+	if( num_nodes_in_list != 2)
+			return head;
 
 
 	if (pre_node_1 == NULL) // node_1 is the head
-		head = node_2;		
+			head = node_2;		
 	else
-		pre_node_1->next = node_2;
+			pre_node_1->next = node_2;
 	
 	if (pre_node_2 == NULL) // node_2 is the head
 		head = node_1;
