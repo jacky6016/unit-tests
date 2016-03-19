@@ -1,5 +1,6 @@
-/* FIXME : introduce elegant ways to reuse */
-#include "swap.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include "linkedlist.h"
 
 void bubble_sort(List **head)
 {
